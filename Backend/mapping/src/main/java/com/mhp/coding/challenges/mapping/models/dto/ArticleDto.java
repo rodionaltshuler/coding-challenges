@@ -3,7 +3,10 @@ package com.mhp.coding.challenges.mapping.models.dto;
 
 import com.mhp.coding.challenges.mapping.models.dto.blocks.ArticleBlockDto;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
 public class ArticleDto {
 
@@ -42,7 +45,9 @@ public class ArticleDto {
     }
 
     public Collection<ArticleBlockDto> getBlocks() {
-        return blocks;
+        List<ArticleBlockDto> sorted = new ArrayList<>(blocks);
+        sorted.sort(Comparator.comparingInt(ArticleBlockDto::getSortIndex));
+        return sorted;
     }
 
     public void setBlocks(Collection<ArticleBlockDto> blocks) {
