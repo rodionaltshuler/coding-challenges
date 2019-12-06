@@ -25,7 +25,8 @@ public class ArticleController {
 
     @GetMapping("/{id}")
     public ArticleDto details(@PathVariable Long id) {
-        return articleService.articleForId(id);
+        return articleService.articleForId(id)
+                .orElseThrow(ArticleNotFoundException::new);
     }
 
     @PostMapping()

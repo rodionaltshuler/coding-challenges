@@ -21,8 +21,8 @@ public class ArticleRepository {
         return result;
     }
 
-    public Article findBy(Long id){
-        return createDummyArticle(id);
+    public Optional<Article> findBy(Long id){
+        return Optional.of(createDummyArticle(id));
     }
 
     public void create(Article article){
